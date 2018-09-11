@@ -15,7 +15,7 @@ body{
 /* nav bar */
 header {
     background-color: rgba(11, 3, 15, 0.973);
-    color: white;
+    color: rgb(36, 134, 23);
     padding: 20px;
     min-height: 70px;
     margin: 0;
@@ -48,6 +48,9 @@ header {
 #menu a{
     text-decoration: none;
     color: white;
+}
+#menu a:hover{
+    color: rgba(209, 230, 22, 0.973)
 }
 /* search bar */
 header .search{
@@ -138,7 +141,21 @@ span h4{
 }
 button#btn_order{
     float: right;
+    background-color: hsl(123, 69%, 41%);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    font-size: 18px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
 }
+button#btn_order:hover {opacity: 1}
 
 /* media query */
 @media (min-width:640px) {body {font-size: 1rem;}}
