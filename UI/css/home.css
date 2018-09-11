@@ -45,6 +45,10 @@ header {
     display: inline;
 
 }
+#menu a{
+    text-decoration: none;
+    color: white;
+}
 
 /* search bar */
 header .search{
@@ -54,6 +58,7 @@ header .search{
     margin-top: 10px;
     float: left;
 }
+
 
 header input{
     width: 90%;
@@ -103,10 +108,13 @@ h2{
 #foods .add{
     float: right;
 }
+#foods .food h3{
+    margin: 0;
+}
 
 /* edit, delete food list by admin */
 
-/* inner article */
+/* inner food */
 section .inner{
     float: left;
     width: 100%;
@@ -156,7 +164,7 @@ table .btn_delete{
     border-radius: 5px;
 }
 
-/* story list */
+/* food list */
 .inner ul{
     padding: 0;
     margin: 0;
