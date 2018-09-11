@@ -7,7 +7,7 @@
      maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
     <meta name="HandheldFriendly" content ="true">
-    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="stylesheet" type="text/css" href="css/add.css">
     <title>Fast Food</title>
 </head>
 <body>
@@ -17,21 +17,28 @@
     <div id = "menu">
     <ul>
         <li><div class="search">
-                <input type="text" placeholder="search here...">
-            </div></li>
-        <li>Sports</li>
-        <li>Concerts</li>
-        <li>Theaters</li>
-        <li>Venue</li>
+            <input type="text" placeholder="search here...">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">OnMenu</a></li>
+            <li><a href="add_food.html">Admin</a></li>
+            <li><a href="#">Logout</a></li>
     </ul>
 </div>
 </header>
 <section id="profile">
 <div class="container">
 <div class="inner">
-<h1> Add Food </h1>
-<form action="index.html" method="POST">
-    <labe>Name: </labe><input type="text" name="name" ><p></p> 
+    <div id="admin">
+        <ul>
+            <li><a href="add_food.html">Add</a></li>
+            <li><a href="edit.html">Edit</a></li>
+            <li><a href="order.html">View Orders</a></li>
+            <li><a href="#">and</a></li>
+        </ul>
+    </div>
+<h1> Add Dish </h1>
+<form class ="add_form" action="index.html" method="POST">
+    <labe>Dish Name: </labe><input type="text" name="name" ><p></p> 
     <label>Description: </label><textarea name="desc" id="desc" cols="80" rows="10"></textarea>
     <p></p>
     <input type="submit" value="Add food" id ="submit">
