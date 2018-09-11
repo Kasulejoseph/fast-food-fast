@@ -111,7 +111,7 @@ h2{
 #foods .add{
     float: right;
 }
-button{
+.food button{
     background-color: rgb(20, 206, 20);
     border: none;
     color: white;
