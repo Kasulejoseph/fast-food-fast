@@ -19,9 +19,9 @@
         <li><div class="search">
                 <input type="text" placeholder="search here...">
                 <li><a href="home.html">Home</a></li>
-                <li><a href="#">OnMenu</a></li>
-                <li><a href="#">Admin</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="menu.html">OnMenu</a></li>
+                <li><a href="add_food.html">Admin</a></li>
+                <li><a href="login.html">Logout</a></li>
     </ul>
 </div>
 </header>
@@ -38,6 +38,7 @@
             <th>Date</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         <tr>
             <td>1</td>
@@ -45,7 +46,8 @@
             <td>immy</td>
             <td>shs.20k</td>
             <td>24/03/2018</td>
-            <td><button class="btn_edit" >Accept</button></td>
+            <td><button  class="btn_edit" >Accept</button></td>
+            <td><button  class="btn_cpt" >Complete</button></td>
             <td><button class="btn_delete" >Decline</button></td>
         </tr>
         <tr>
@@ -54,8 +56,9 @@
             <td>Ivan</td>
             <td>shs.30k</td>
             <td>23/06/2018</td>
-            <td><button class="btn_edit" >Accept</button></td>
-            <td><button class="btn_delete" >Decline</button></td>
+            <td><button id ="edit" class="btn_edit" >Accept</button></td>
+            <td><button id ="cpt" class="btn_cpt" >complete</button></td>
+            <td><button id="delete"  class="btn_delete" >Decline</button></td>
         </tr>
         <tr>
             <td>3</td>
@@ -64,9 +67,13 @@
             <td>shs.10k</td>
             <td>23/06/2018</td>
             <td><button class="btn_edit" >Accept</button></td>
+            <td><button class="btn_cpt" >Complete</button></td>
             <td><button class="btn_delete" >Decline</button></td>
         </tr>
     </table>
 </div>
 </div>
 </section>
+<script src="./javascript/script.js"></script>
+</body>
+</html>
