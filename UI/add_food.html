@@ -19,9 +19,9 @@
         <li><div class="search">
             <input type="text" placeholder="search here...">
             <li><a href="home.html">Home</a></li>
-            <li><a href="#">OnMenu</a></li>
+            <li><a href="menu.html">OnMenu</a></li>
             <li><a href="add_food.html">Admin</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="login.html">Logout</a></li>
     </ul>
 </div>
 </header>
@@ -33,14 +33,16 @@
             <li><a href="add_food.html">Add</a></li>
             <li><a href="edit.html">Edit</a></li>
             <li><a href="order.html">View Orders</a></li>
-            <li><a href="#">and</a></li>
+            <li><a href="menu.html">Menu</a></li>
         </ul>
     </div>
 <h1> Add Dish </h1>
-<form class ="add_form" action="index.html" method="POST">
-    <labe>Dish Name: </labe><input type="text" name="name" ><p></p> 
+<form class ="add_form" action="edit.html" method="POST">
+    <labe>Dish Name: </labe><input type="text" name="name" ><p></p>
+    <labe>Cost: </labe><input type="text" name="name" ><p></p>  
     <label>Description: </label><textarea name="desc" id="desc" cols="80" rows="10"></textarea>
     <p></p>
+    <label>Upload Image: </label> <input type="file" name="image" id="image"><p></p>
     <input type="submit" value="Add food" id ="submit">
 </div>
 </div>
