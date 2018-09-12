@@ -33,7 +33,7 @@ header {
 }
 #menu {
     float: right;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 #menu ul{
     padding 0;
@@ -57,7 +57,7 @@ header .search{
     top: 30%;
     width: 400px;
     padding-left:60px;
-    margin-top: 10px;
+    margin-top: 5px;
     float: left;
 }
 
@@ -66,7 +66,7 @@ header input{
     display: block; 
     border: 1px solid #e8491d;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 /* accept or decline food order by admin */
 
@@ -96,6 +96,19 @@ section .inner{
 table .btn_edit{
     color: white;
     background: hsl(123, 69%, 41%);
+    height: 30px;
+    width: auto;
+	cursor: pointer;
+	position: relative;
+	font-family: sans-serif;
+    border: none;
+    outline:none;
+	font-size: 18px;
+    border-radius: 5px;
+}
+table .btn_cpt{
+    color: white;
+    background: hsl(127, 5%, 65%);
     height: 30px;
     width: auto;
 	cursor: pointer;

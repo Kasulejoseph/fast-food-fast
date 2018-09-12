@@ -51,9 +51,15 @@ input[type=text]:focus {
     border-radius: 50%;
   
 }
-
+/* label */
 label{
     color: #0d17b8;
     font-size: 18px;
+}
+label a{
+    text-decoration: none;
     cursor: pointer;
+}
+label a:hover{
+    color:rgb(56, 51, 2);;
 }
