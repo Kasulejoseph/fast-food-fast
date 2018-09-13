@@ -74,6 +74,7 @@ header input{
 section .inner{
     float: left;
     width: 100%;
+    overflow-x:auto
 }
 /* food.. table */
 .inner table{
@@ -133,7 +134,7 @@ table .btn_delete{
     border-radius: 5px;
 }
 
-/* story list */
+/* food list */
 .inner ul{
     padding: 0;
     margin: 0;
@@ -170,17 +171,34 @@ button#btn_order{
 }
 button#btn_order:hover {opacity: 1}
 
+input#checkbox {
+    width: 70px;
+  height: 30px;
+}
 /* media query */
 @media (min-width:640px) {body {font-size: 1rem;}}
 @media (min-width:960px) {body {font-size: 1.2rem;}}
 @media (min-width:1100px) {body {font-size: 1.5rem;}}
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     body {
         background-color: rgb(192, 173, 67);
     }
     header {
         padding: 20px;
         min-height: 100px;
-
+        text-align: center;
+    }
+    header #nav {
+        text-align: center;
+        float: none;
+    }
+    section .inner{
+        float: none;
+        width: 100%;
+        overflow-x:auto
+    }
+    .inner table th,td{
+        text-align: center;
+        
     }

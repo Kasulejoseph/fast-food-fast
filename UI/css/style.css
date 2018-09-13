@@ -6,6 +6,7 @@ body{
 }
 section {
     margin: auto;
+    margin-top: 50px;
     width: 50%;
 
 }
@@ -14,19 +15,16 @@ section {
     margin-top: 10px;
     background-color:  #d2c9c7 ;
     padding: 40px;
-    align: center;
-    margin: 100px;
+    margin: 10%;
     border-radius: 8px;
 
 }
 #register input {
     width: 100%;
-    padding: 5px;
     border-color: black;
     padding: 12px 20px;
-    margin: 8px 0;
-    border: 2px solid  #229de8
-    ;
+    margin: 2px 0;
+    border: 2px solid  #229de8;
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -45,8 +43,9 @@ input[type=text]:focus {
 /* avatar */
 #register img {
     vertical-align: middle;
-    width: 40%;
-    height: 40%;
+    padding: 20px;
+    width: 30%;
+    height: 30%;
     margin-left: 25%;
     border-radius: 50%;
   
@@ -63,3 +62,17 @@ label a{
 label a:hover{
     color:rgb(56, 51, 2);;
 }
+
+
+
+
+@media screen and (max-width: 700px){
+    section{
+        width: 100%;
+    }
+    #register {
+      width: 70%;
+      margin: 10%;
+    }
+
+  }
