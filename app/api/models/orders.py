@@ -30,10 +30,14 @@ class OrderList:
         """
         get all orders posted
         """
+<<<<<<< HEAD
         details = order_data
         if self.order_list is not None:
             return self.order_list
         return "order list empty"
+=======
+        pass
+>>>>>>> add_order
 
     def get_one_order(self,id):
         pass
