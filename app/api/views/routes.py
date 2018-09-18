@@ -60,7 +60,11 @@ class OrderOne(Resource):
         '/api/v1/orders/<int:id>',
         methods=['DELETE'])
     def delete_order(id):
-        pass
+        delete_one = ORDERS.delete_one_order(id)
+        if ORDERS.is_order_exist(id):
+            return jsonify({'error': ORDERS.is_order_exist(id)}),404
+        return jsonify({'message': delete_one}), 200
+        return jsonify({'error':'id not specified'}),404
 
 
 api.add_resource(OrderOne, 
