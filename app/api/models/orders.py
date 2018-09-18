@@ -36,13 +36,19 @@ class OrderList:
         return "order list empty"
 
     def get_one_order(self,id):
-            for order in self.order_list:
-                if order['id'] == id:
-                    return order
-            return "not found"
+        for order in self.order_list:
+            if order['id'] == id:
+                return order
+        return "not found"
 
     def update_order(self,details,id):
-        pass
+        order = self.get_one_order(id)
+        status = details['status']
+        sta = Order.status()                                                                        
+        if status not in sta:
+            return "bad requesat"
+        sta[0] = details['status']
+        return sta[0]
 
     def delete_one_order(self, id):
         pass

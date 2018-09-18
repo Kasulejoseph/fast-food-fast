@@ -50,7 +50,11 @@ class OrderOne(Resource):
         '/api/v1/orders/<int:id>',
         methods=['PUT'])
     def update_order(id):
-        pass
+        data = request.get_json()
+        detail = data.get('details')
+        update = ORDERS.update_order(detail,id)
+        if update:
+            return jsonify({'message': update})
 
     @main.route(
         '/api/v1/orders/<int:id>',
