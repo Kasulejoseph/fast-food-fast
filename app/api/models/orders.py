@@ -30,10 +30,16 @@ class OrderList:
         """
         get all orders posted
         """
-        pass
+        details = order_data
+        if self.order_list is not None:
+            return self.order_list
+        return "order list empty"
 
     def get_one_order(self,id):
-        pass
+            for order in self.order_list:
+                if order['id'] == id:
+                    return order
+            return "not found"
 
     def update_order(self,details,id):
         pass

@@ -15,7 +15,10 @@ class OrderAll(Resource):
         '/api/v1/orders/',
         methods=['GET'])
     def get_all():
-        pass
+        all = ORDERS.get_all_order('detail')
+        if all:
+            return jsonify({'message': all}),200
+        return jsonify({'error':'empty'}),404
 
     @main.route(
         '/api/v1/orders/',
@@ -37,7 +40,10 @@ class OrderOne(Resource):
         '/api/v1/orders/<int:id>',
         methods=['GET'])
     def get_order(id):
-        pass
+        one1 = ORDERS.get_one_order(id)
+        if ORDERS.is_order_exist(id):
+            return jsonify({'error': ORDERS.is_order_exist(id)}),404
+        return jsonify({'message': one1}), 200
         
 
     @main.route(
