@@ -52,7 +52,11 @@ class OrderList:
         return sta[0]
 
     def delete_one_order(self, id):
-        pass
+        for order in self.order_list:
+            if order['id'] == id:
+                self.order_list.remove(order)
+                return "deleted"
+        return "not found"
 
         
         
