@@ -9,54 +9,67 @@ class OrderList:
         self.order_list = []
 
     def is_order_exist(self, id):
+        """check if order not exist in the order list """
         for order in self.order_list:
             if order['id'] != id:
                 return "bad request, order not found"
+
+    def is_valid_order(self, order_data):
+        """ check whether order is a valid one """
+        details = order_data
+        self.order = Order(id,details['dish'],details['description'],details['price'])
+        if not self.order:
+            return "invalid order"
 
     def add_order(self,order_data,id):
         """
         create an order in not exists
         """
-        details = order_data
-        order = Order(id,details['dish'],details['description'],details['price'])
-        order_dict = order.order_json()
+        order_dict = self.order.order_json()
         if order_dict in self.order_list:
             return "Order already exist"
-        else:
-            self.order_list.append(order_dict)
-            return order_dict
+        self.order_list.append(order_dict)
+        return order_dict
 
-    def get_all_order(self, order_data):
+    def get_all_order(self):
         """
         get all orders posted
         """
-        details = order_data
         if self.order_list is not None:
             return self.order_list
         return "order list empty"
 
-
     def get_one_order(self,id):
+        """
+        get one order by its id
+        """
         for order in self.order_list:
             if order['id'] == id:
                 return order
         return "not found"
 
     def update_order(self,details,id):
+        """ update the status of the order 
+        """
         order = self.get_one_order(id)
         status = details['status']
-        sta = Order.status()                                                                        
+        sta = Order.status()            #get status list from order class
+        sta[0] = details['status']                                                                        
         if status not in sta:
-            return "bad requesat"
-        sta[0] = details['status']
-        return sta[0]
+            return "invalid order status"
+        if order['id'] == id:
+            order['status'] = sta[0]
+            return order
+        return None
 
     def delete_one_order(self, id):
+        """ delete an order by its id
+        """
         for order in self.order_list:
             if order['id'] == id:
                 self.order_list.remove(order)
                 return "deleted"
-        return "not found"
+        return "order id to delete not found"
 
         
         

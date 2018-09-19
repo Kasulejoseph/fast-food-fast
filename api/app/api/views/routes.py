@@ -1,5 +1,5 @@
 from flask import Flask, request,jsonify,Blueprint
-from flask_restful import Api, Resource
+from flask_restful import Api, Resource, abort
 from app.api.models.orders import OrderList
 from app.api import app
 
@@ -15,10 +15,10 @@ class OrderAll(Resource):
         '/api/v1/orders/',
         methods=['GET'])
     def get_all():
-        all = ORDERS.get_all_order('detail')
+        all = ORDERS.get_all_order()
         if all:
-            return jsonify({'message': all}),200
-        return jsonify({'error':'empty'}),404
+            return jsonify({'Orders': all}),200
+        return jsonify({'error':'no orders posted yet'}),404
 
     @main.route(
         '/api/v1/orders/',
@@ -26,10 +26,10 @@ class OrderAll(Resource):
     def add_order():
         data = request.get_json()
         detail = data.get('details')
-        if detail:
-            add = ORDERS.add_order(detail,id)
-            return jsonify({'message': add }),201
-        return jsonify({'error': 'errrror'}), 404
+        if ORDERS.is_valid_order(detail):
+            return jsonify({'error': ORDERS.is_valid_order(detail)}), 404
+        add = ORDERS.add_order(detail,id)
+        return jsonify({'order': add }),201
 
 
 class OrderOne(Resource):
@@ -41,11 +41,10 @@ class OrderOne(Resource):
         methods=['GET'])
     def get_order(id):
         one1 = ORDERS.get_one_order(id)
-        if ORDERS.is_order_exist(id):
+        if not ORDERS.is_order_exist(id):
             return jsonify({'error': ORDERS.is_order_exist(id)}),404
         return jsonify({'message': one1}), 200
         
-
     @main.route(
         '/api/v1/orders/<int:id>',
         methods=['PUT'])
@@ -53,6 +52,8 @@ class OrderOne(Resource):
         data = request.get_json()
         detail = data.get('details')
         update = ORDERS.update_order(detail,id)
+        if len(detail) !=4:
+            abort(404)
         if update:
             return jsonify({'message': update})
 
@@ -60,11 +61,10 @@ class OrderOne(Resource):
         '/api/v1/orders/<int:id>',
         methods=['DELETE'])
     def delete_order(id):
-        delete_one = ORDERS.delete_one_order(id)
-        if ORDERS.is_order_exist(id):
+        if not ORDERS.is_order_exist(id):
             return jsonify({'error': ORDERS.is_order_exist(id)}),404
+        delete_one = ORDERS.delete_one_order(id)
         return jsonify({'message': delete_one}), 200
-        return jsonify({'error':'id not specified'}),404
 
 
 api.add_resource(OrderOne, 
