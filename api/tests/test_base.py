@@ -13,8 +13,14 @@ class BaseTestCase(unittest.TestCase):
         app.config.from_object(app_config["testing"])
         return app
 
-    def SetUp(self):
+    def setUp(self):
         self.client = app.test_client(self)
+        self.order = {'details': {
+            'id':3 ,
+            'dish': "jgh",
+            'description': "description",
+            'price': 34
+        }}
 
     def test_app_exists(self):
         self.assertFalse(self.create_app is None)
