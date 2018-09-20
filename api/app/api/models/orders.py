@@ -46,18 +46,17 @@ class OrderList:
         for order in self.order_list:
             if order['id'] == id:
                 return order
-        return "not found"
 
     def update_order(self,details,id):
         """ update the status of the order 
         """
         order = self.get_one_order(id)
         status = details['status']
-        sta = Order.status()            #get status list from order class
-        sta[0] = details['status']                                                                        
+        sta = Order.status()            #get status list from order class                                                                        
         if status not in sta:
             return "invalid order status"
         if order['id'] == id:
+            sta[0] = details['status']
             order['status'] = sta[0]
             return order
         return None
@@ -65,11 +64,10 @@ class OrderList:
     def delete_one_order(self, id):
         """ delete an order by its id
         """
-        for order in self.order_list:
-            if order['id'] == id:
-                self.order_list.remove(order)
-                return "deleted"
-        return "order id to delete not found"
+        order = self.get_one_order(id)
+        if order :
+            self.order_list.remove(order)
+            return "deleted"
 
         
         
