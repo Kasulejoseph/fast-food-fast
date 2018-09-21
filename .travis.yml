@@ -6,11 +6,13 @@ python:
 # install dependency
 install: 
   - pip install -r requirements.txt
+  - pip install pytest
+  - pip install pytest-cov
   - pip install coveralls
 
 script:
   - cd api
-  - coverage run -m unittest tests/test_base.py tests/test_routes.py -v
+  - pytest --cov=api
   - coverage report -m
 after_success: 
 - coveralls
