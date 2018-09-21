@@ -1,0 +1,16 @@
+language: python
+
+python:
+    - "3.6"
+
+# install dependency
+install: 
+  - pip install -r requirement.txt
+  - pip install coveralls
+
+script:
+  - cd api
+  - coverage run -m unittest tests/test_base.py tests/test_routes.py -v
+  - coverage report -m
+after_success: 
+- coveralls
