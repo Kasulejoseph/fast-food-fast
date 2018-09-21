@@ -21,7 +21,7 @@ class BaseTestCase(unittest.TestCase):
             'description': "description",
             'price': 34
         }}
-
+    
     def test_app_exists(self):
         self.assertFalse(self.create_app is None)
 

@@ -50,7 +50,44 @@ class TestOrderRoutes(BaseTestCase):
         self.assertEqual(result.status_code,401)
         self.assertIn('Content-type must be application/json',str(result.data))
 
+    def test_get_order_when_no_orders_in_order_list(self):
+        list = []
+        result = self.client.get('/api/v1/orders/',
+                    content_type = 'application/json',
+                    data  = json.dumps(list))
 
+        self.assertEqual(result.status,'404 NOT FOUND')
+        self.assertIn('no orders posted yet',str(result.data))
+        
+    def test_request_get_all_orders(self):
+        self.list = [{
+            'id':3 ,
+            'dish': "jgh",
+            'description': "description",
+            'price': 34
+        }]
+        result = self.client.get('/api/v1/orders/',
+                    content_type = 'application/json',
+                    data = json.dumps(self.list)
+        )
+        data = json.loads(result.data.decode())
+        self.assertEqual(result.status,'200 OK')
+        self.assertTrue(result)
+        self.assertIsInstance(data['Orders'], list)
+        self.assertTrue(len(data['Orders']) != 0)
+        self.assertIn('"price": 34',str(result.data))
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_can_get_order_by_id(self):
+        self.list = [{
+            'id':3 ,
+            'dish': "jgh",
+            'description': "description",
+            'price': 34
+        }]
+        result = self.client.get('/api/v1/orders/1',
+                    content_type ='aplication/json',
+                    )
+        data = json.loads(result.data.decode())
+        self.assertEqual(result.status_code,404)
+        #self.assertIn("bad request, order not found",str(result.data))
+
