@@ -6,13 +6,11 @@ python:
 # install dependency
 install: 
   - pip install -r requirements.txt
-  - pip install pytest
-  - pip install pytest-cov
-  - pip install coveralls
+
 
 script:
   - cd api
-  - pytest --cov=api
-  - coverage report -m
+  - pytest -v --cov api --cov-report term-missing
+
 after_success: 
 - coveralls
