@@ -5,7 +5,7 @@ python:
 
 # install dependency
 install: 
-  - pip install -r requirement.txt
+  - pip install -r requirements.txt
   - pip install coveralls
 
 script:
