@@ -6,6 +6,8 @@ python:
 # install dependency
 install: 
   - pip install -r requirements.txt
+  - pip install pytest
+  - pip install pytest-cov
 
 
 script:
