@@ -55,7 +55,7 @@ Fast-Food-Fast is a food delivery service app for a restaurant.
      to your request method
    - comfirm data is returned for every request made
    ```
-   ## Test Tests
+   ## Units Tests
    Install pytest and run
    ```
    $ pytest -v --cov api --cov-report
