@@ -53,8 +53,9 @@ class OrderOne(Resource):
         #Call get_one_order in ORDERS class to verify the requested id
         one1 = ORDERS.get_one_order(id)
 
-        if not ORDERS.is_order_exist(id):
-            return jsonify({'error': ORDERS.is_order_exist(id)}),404
+        order_exist = ORDERS.is_order_exist(id)
+        if not order_exist:
+            return jsonify({'error': order_exist}),404
         
         if not one1:
             return jsonify({"invalid":"order id requested not found"}),400
@@ -76,23 +77,24 @@ class OrderOne(Resource):
             return jsonify({'failed': 'No attributes specified in the request'}), 401
         
         if not one1:
-            return jsonify({"invalid":"order id requested not found"}),400
+            return jsonify({"invalid":"No content found for requested it"}),400
         
-        if len(detail) !=4:
-            abort(400)
+        if len(detail) !=5:
+            abort(404)
     
         #Call update_orders in ORDERS which updates the order status
         update = ORDERS.update_order(detail,id)
         if update:
-            return jsonify({'message': update})
+            return jsonify({'message': update}),200
 
     @main.route(
         '/api/v1/orders/<int:id>',
         methods=['DELETE'])
     def delete_order(id):
         #Call is_order_exist to confirm whether the passed id is a valid
-        if not ORDERS.is_order_exist(id):
-            return jsonify({'error': ORDERS.is_order_exist(id)}),404
+        order_exist = ORDERS.is_order_exist(id)
+        if not order_exist:
+            return jsonify({'error': order_exist}),404
 
         #Call ORDERS.delete_one_order(id) to delete the order by id
         delete_one = ORDERS.delete_one_order(id)

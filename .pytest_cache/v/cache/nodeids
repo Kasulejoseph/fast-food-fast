@@ -32,8 +32,12 @@
   "api/tests/test_routes.py::BaseTestCase::test_status_not_empty",
   "api/tests/test_routes.py::TestOrderRoutes::test_app_exists",
   "api/tests/test_routes.py::TestOrderRoutes::test_can_get_order_by_id",
+  "api/tests/test_routes.py::TestOrderRoutes::test_cant_delete_food_item_when_food_list_empty",
   "api/tests/test_routes.py::TestOrderRoutes::test_get_order_when_no_orders_in_order_list",
+  "api/tests/test_routes.py::TestOrderRoutes::test_id_has_no_corresponding_data",
   "api/tests/test_routes.py::TestOrderRoutes::test_id_is_integer",
+  "api/tests/test_routes.py::TestOrderRoutes::test_incoming_update_is_valid",
+  "api/tests/test_routes.py::TestOrderRoutes::test_kasule_deleted_by_id",
   "api/tests/test_routes.py::TestOrderRoutes::test_no_content_in_order_request",
   "api/tests/test_routes.py::TestOrderRoutes::test_no_details_keyword_in_order_request",
   "api/tests/test_routes.py::TestOrderRoutes::test_order_can_be_added_to_list_of_orders",
@@ -44,5 +48,8 @@
   "api/tests/test_routes.py::TestOrderRoutes::test_request_not_json",
   "api/tests/test_routes.py::TestOrderRoutes::test_status_is_not_valid",
   "api/tests/test_routes.py::TestOrderRoutes::test_status_is_valid",
-  "api/tests/test_routes.py::TestOrderRoutes::test_status_not_empty"
+  "api/tests/test_routes.py::TestOrderRoutes::test_status_not_empty",
+  "api/tests/test_routes.py::TestOrderRoutes::test_to_delete_order_by_invalid_id",
+  "api/tests/test_routes.py::TestOrderRoutes::test_update_has_no_details_keyword_in_order_request",
+  "api/tests/test_routes.py::TestOrderRoutes::test_update_not_in_json"
 ]
