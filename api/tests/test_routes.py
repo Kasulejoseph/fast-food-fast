@@ -208,7 +208,7 @@ class TestOrderRoutes(BaseTestCase):
         self.assertEqual(rs.status_code,401)
         self.assertIn("order id to delete not found",str(rs.data))
 
-    def test_kasule_deleted_by_id(self):
+    def test_kasule_order_deleted_by_id(self):
         """
         Delete order item by its id
         :id =23
