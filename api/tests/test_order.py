@@ -23,5 +23,10 @@ class OrderTestClass(BaseTestCase):
         }
         self.order = Order(id,details['dish'],details['description'],details['price'])
         self.assertTrue(self.order)
+        
+    def test_order_list_is_none(self):
+        self.assertTrue(OrderList().get_all_order)
+
+
 
     
