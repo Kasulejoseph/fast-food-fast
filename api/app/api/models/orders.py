@@ -59,7 +59,7 @@ class OrderList:
             sta[0] = details['status']
             order['status'] = sta[0]
             return order
-        return None
+
 
     def delete_one_order(self, id):
         """ delete an order by its id
