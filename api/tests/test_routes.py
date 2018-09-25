@@ -65,7 +65,7 @@ class TestOrderRoutes(BaseTestCase):
         )
         self.list.append(self.order)
         self.assertEqual(result.status_code,201)
-        self.assertIn("description",str(result.data))
+        self.assertIn("order added successfully",str(result.data))
 
         #get order by its id (GET)
         result = self.client.get(
@@ -127,7 +127,7 @@ class TestOrderRoutes(BaseTestCase):
         self.assertTrue(len(data['Orders']) != 0)
         self.assertIn('"price": 34',str(result.data))
 
-    def test_cant_get_which_doesnt_exist(self):
+    def test_cant_get_order_which_doesnt_exist(self):
         """ 
         Test that you can get an order
         from empty order list 
@@ -138,7 +138,6 @@ class TestOrderRoutes(BaseTestCase):
             content_type ='aplication/json',
             data = json.dumps(self.list)
         )
-        data = json.loads(result.data.decode())
         self.assertEqual(result.status_code,404)
         self.assertIn("null",str(result.data))
 
@@ -198,7 +197,7 @@ class TestOrderRoutes(BaseTestCase):
         data = json.loads(result.data.decode())
         self.assertEqual(result.status_code,201)
         #self.assertIn("peasd",str(data))
-        self.assertIn("description",str(result.data))
+        self.assertIn("order added successfully",str(result.data))
         
         rs = self.client.put(
             '/api/v1/orders/23',
@@ -206,9 +205,7 @@ class TestOrderRoutes(BaseTestCase):
             data= json.dumps(self.order)
         )
         #data = json.loads(rs.data.decode())
-        self.assertTrue(len(data['order']) ==5)
-        self.assertTrue(data['order']['status'] == 'pending')
-        self.assertIn('pending',str(data['order']))
+        self.assertIn('order added successfully',str(data['order']))
         self.assertEqual(rs.status_code,404)
 
     def test_cant_delete_food_item_when_food_list_empty(self):
@@ -245,7 +242,7 @@ class TestOrderRoutes(BaseTestCase):
         #append to list and test for post         
         self.list.append(self.order)
         self.assertEqual(result.status_code,201)
-        self.assertIn("description",str(result.data))
+        self.assertIn("order added successfully",str(result.data))
 
         #try to delete item with id 1000 that dont exist in the list
         rs = self.client.delete(
@@ -279,7 +276,7 @@ class TestOrderRoutes(BaseTestCase):
         list.append(order)
         data = json.loads(rv.data.decode())
         self.assertEqual(rv.status_code,201)
-        self.assertIn("description",str(rv.data))
+        self.assertIn("order added successfully",str(rv.data))
 
         #delete the food item by its id 23
         rs = self.client.delete(
@@ -308,9 +305,7 @@ class TestOrderRoutes(BaseTestCase):
         data = json.loads(result.data.decode())
         self.assertEqual(result.status_code,201)
         #self.assertIn("peasd",str(data))
-        self.assertIn("description",str(result.data))
-
-
+        self.assertIn("order added successfully",str(result.data))
 
         rs = self.client.put(
             '/api/v1/orders/26',
@@ -326,10 +321,7 @@ class TestOrderRoutes(BaseTestCase):
         data = json.loads(rs.data.decode())
         self.assertIn('invalid order status',str(data))
         self.assertEqual(rs.status_code,200)
-
-
-
-        
+    
         rs = self.client.put(
             '/api/v1/orders/26',
             content_type = 'application/json',
@@ -342,13 +334,81 @@ class TestOrderRoutes(BaseTestCase):
             }})
         )
         data = json.loads(rs.data.decode())
-        self.assertTrue(len(data['message']) ==5)
-        self.assertFalse(data['message']['status'] == 'pending')
-        self.assertIn('complete',str(data))
+        self.assertIn('status updated successfully',str(data))
         self.assertEqual(rs.status_code,200)
         
+    def test_attribute_dish_not_strings(self):
+        """ Test Dish not strings """
+        self.order = {'details': {
+            'dish': 6787,
+            'description': "description",
+            'price': 34
+        }}
+        result = self.client.post(
+            '/api/v1/orders/',
+            content_type = 'application/json',
+            data=json.dumps(self.order)
+        )
+        self.assertEqual(result.status_code,404)
+        self.assertIn('Dish should be in string format',str(result.data))
     
-
+    def test_description_not_strings(self):
+        """ Test description is not strings """
+        self.order = {'details': {
+            'dish': "6787",
+            'description': 60000,
+            'price': 34
+        }}
+        result = self.client.post(
+            '/api/v1/orders/',
+            content_type = 'application/json',
+            data=json.dumps(self.order)
+        )
+        self.assertEqual(result.status_code,404)
+        self.assertIn('Description should be string format',str(result.data))
         
+    def test_price_should_be_integer(self):
+        """ Test price is integer """
+        self.order = {'details': {
+            'dish': "buffer",
+            'description': "mawogo",
+            'price': "sente"
+        }}
+        result = self.client.post(
+            '/api/v1/orders/',
+            content_type = 'application/json',
+            data=json.dumps(self.order)
+        )
+        self.assertEqual(result.status_code,404)
+        self.assertIn('price should be integer',str(result.data))
 
-        
+    def test_spaces_as_inputs(self):
+        """ Test dish and description have only spaces """
+        self.order = {'details': {
+            'dish': "            ",
+            'description': "mawogo",
+            'price': 9000
+        }}
+        result = self.client.post(
+            '/api/v1/orders/',
+            content_type = 'application/json',
+            data=json.dumps(self.order)
+        )
+        self.assertEqual(result.status_code,404)
+        self.assertIn('order request contains spaces',str(result.data))
+
+    def test_dish_and_description_has_empty_string(self):
+        """ Test dish and description are not empty strings """
+        self.order = {'details': {
+            'dish': "",
+            'description': "",
+            'price': 9000
+        }}
+        result = self.client.post(
+            '/api/v1/orders/',
+            content_type = 'application/json',
+            data=json.dumps(self.order)
+        )
+        self.assertEqual(result.status_code,404)
+        self.assertIn('No field should be left empty',str(result.data))
+

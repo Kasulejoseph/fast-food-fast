@@ -17,7 +17,20 @@ class OrderList:
     def is_valid_order(self, order_data):
         """ check whether order is a valid one """
         details = order_data
-        self.order = Order(id,details['dish'],details['description'],details['price'])
+        dish = details['dish']
+        desc = details['description']
+        price = details['price']
+        if not isinstance(desc, str):
+            return "Description should be string format"
+        if not isinstance(dish, str):
+            return "Dish should be in string format"
+        if not isinstance(price, int):
+            return "price should be integer"
+        if dish.isspace():
+            return "order request contains spaces"
+        if len(dish)==0 or len(desc) == 0 or price == 0:
+            return "No field should be left empty"
+        self.order = Order(id,dish.lower(),desc.lower(),price)
         if not self.order:
             return "invalid order"
 
@@ -29,7 +42,7 @@ class OrderList:
         if order_dict in self.order_list:
             return "Order already exist"
         self.order_list.append(order_dict)
-        return order_dict
+        return "order added successfully"
 
     def get_all_order(self):
         """
@@ -51,14 +64,14 @@ class OrderList:
         """ update the status of the order 
         """
         order = self.get_one_order(id)
-        status = details['status']
+        status = details['status'].lower()
         sta = Order.status()            #get status list from order class                                                                        
         if status not in sta:
             return "invalid order status"
         if order['id'] == id:
             sta[0] = details['status']
             order['status'] = sta[0]
-            return order
+            return "status updated successfully"
 
 
     def delete_one_order(self, id):
@@ -67,7 +80,7 @@ class OrderList:
         order = self.get_one_order(id)
         if order :
             self.order_list.remove(order)
-            return "deleted"
+            return "deleted successfully"
 
         
         
