@@ -11,21 +11,49 @@
     <title>Fast Food</title>
 </head>
 <body>
-    <section>
+<section>
+<div class="container">
+<div class="intro">
+    <h1>Fast Food Fast</h1><p>
+        <h3>We offer the fastest food delivery service<br>
+            Our meals are tasty, appetizing, scrumptious, yummy,<br>
+            luscious, delectable, mouth-watering,<br>
+            appealing, enchanting, charming
+        </h3>
+    </p><p>
+        <h3>
+            Join the world’s food delivery service<br>
+            Register to get started
+        </h3>
+    </p>
+</div></div>
     <div id="register">
-        <div class="avatar">
-                <img src = "image/avat3.png">
-            </div>
-        <form action="login.html">
+        
+        <form action="login.html" id="form">
+                <div class="avatar">
+                        <img src = "image/avat3.png">
+                    </div>
             <input type="text" name="name" placeholder="Your Username" required> <p></p>
             <input type="email" name="email" placeholder="youremail@gmail.com" required> <p></p> 
             <input type="text" name="name" placeholder="Home Address"> <p></p>
             <input type="password" placeholder="password" required><p></p>
             <input type="password" placeholder="confirm password" required><p></p>
             <input type="submit" value="Sign Up" id ="submit">
-            <label>Have an account?<a href="login.html"> Log in</a></label>
+            <div id="label"><label>Have an account?<a onclick = "login()" > Log in</a></label></div>
         </form>
+        <div id = "logini">
+                <div class="avatar">
+                        <img src = "image/avat3.png">
+                    </div>
+                <form action="home.html">
+                    <input type="text" name="name" placeholder="Username" required> <p></p>
+                    <input type="password" placeholder="password" required><p></p>
+                    <input type="submit" value="Log In" id ="submit">
+                    <div id= "label"><label>Don't have an account? <a href="index.html">Register</a></label></div>
+                </form>
+        </div>
 </div>
 </section> 
+<script src="./javascript/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,19 @@
+function login(){
+    //var x = document.getElementById("logini");
+    //document.getElementById("logini").style.display = "block";
+    //document.getElementById("logini").style.display = "none";
+    if (document.getElementById("logini").style.display = "none"){
+        document.getElementById("logini").style.display = "block";
+        document.getElementById("form").style.display = "none";
+    }
+    else {
+        document.getElementById("logini").style.display = "none";
+    }
+}
+
+
+
+
 //define 
 var edit = document.getElementsByClassName("btn_edit")[0];
 //

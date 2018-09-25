@@ -2,28 +2,46 @@ body{
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
-    background-color: #cfe4f7;
+    background-image: url(../image/special-6.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* global*/
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: none;
 }
 section {
-    margin: auto;
-    margin-top: 50px;
-    width: 50%;
+    margin-top: 5px;    
 
 }
+.intro{
+    float: left;
+    color: black;
+    font-size: 18px;
+    background-color: rgb(136, 22, 22,0.5);
+    padding: 3%;
+    width: 60%;
+    padding-top: 20px;
+    margin-top: 10%;
+}
+
 /* sign up */
 #register {
-    margin-top: 10px;
     background-color:  #d2c9c7 ;
-    padding: 40px;
-    margin: 10%;
-    border-radius: 8px;
-
+    float: right;
+    margin-right:5%;
+    margin-top:5%;
+    align-content: center;
+    padding:3%;
+    border-radius:2%;
 }
 #register input {
     width: 100%;
     border-color: black;
-    padding: 12px 20px;
-    margin: 2px 0;
+    padding: 9px 20px;
     border: 2px solid  #229de8;
     border-radius: 10px;
     box-sizing: border-box;
@@ -32,7 +50,10 @@ input[type=text]:focus {
     border: 3px solid #555;
 }
 /* sign up btn */
-
+#form{
+    justify-content: center;
+    /* display: block; */
+}
 #submit {
     background-color: #1c8c11;
     text-align: center;
@@ -41,19 +62,19 @@ input[type=text]:focus {
     color:white;
 }
 /* avatar */
-#register img {
-    vertical-align: middle;
-    padding: 20px;
-    width: 30%;
-    height: 30%;
-    margin-left: 25%;
-    border-radius: 50%;
-  
+#register .avatar{
+    align-content: center;
+}
+#register .avatar img {
+    padding-left: 30%;
+    width: 100px;
+    height: 100px;  
 }
 /* label */
-label{
+#label{
     color: #0d17b8;
     font-size: 18px;
+    text-align: center;
 }
 label a{
     text-decoration: none;
@@ -61,6 +82,10 @@ label a{
 }
 label a:hover{
     color:rgb(56, 51, 2);;
+}
+
+#logini{
+    display: none;
 }
 
 
