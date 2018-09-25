@@ -1,10 +1,8 @@
 from flask import Flask, request,jsonify,Blueprint
 from flask_restful import Api, Resource, abort
 from app.api.models.orders import OrderList
-from app.api import app
 
 main = Blueprint('main', __name__)
-api = Api(app)
 ORDERS = OrderList()
 
 class OrderAll(Resource):
@@ -102,8 +100,3 @@ class OrderOne(Resource):
             return jsonify({"failed": "order id to delete not found"}),401
         return jsonify({'message': delete_one}), 200
 
-
-api.add_resource(OrderOne, 
-    '/api/v1/order/<int:id>', endpoint='order')
-api.add_resource(OrderAll,
-    '/api/v1/order/', endpoint='orderall')
