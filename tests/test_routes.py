@@ -385,8 +385,8 @@ class TestOrderRoutes(BaseTestCase):
     def test_spaces_as_inputs(self):
         """ Test dish and description have only spaces """
         self.order = {'details': {
-            'dish': "            ",
-            'description': "mawogo",
+            'dish': " ",
+            'description': " ",
             'price': 9000
         }}
         result = self.client.post(
@@ -402,7 +402,7 @@ class TestOrderRoutes(BaseTestCase):
         self.order = {'details': {
             'dish': "",
             'description': "",
-            'price': 9000
+            'price': 0
         }}
         result = self.client.post(
             '/api/v1/orders/',
