@@ -26,8 +26,8 @@ class OrderList:
             return "Dish should be in string format"
         if not isinstance(price, int):
             return "price should be integer"
-        if dish.isspace():
-            return "order request contains spaces"
+        if dish.strip() == '' or desc.strip() == '':
+            return "order request contains spaces only"
         if len(dish)==0 or len(desc) == 0 or price == 0:
             return "No field should be left empty"
         self.order = Order(id,dish.lower(),desc.lower(),price)
